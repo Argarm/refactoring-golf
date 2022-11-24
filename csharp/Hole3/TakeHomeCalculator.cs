@@ -19,17 +19,8 @@ namespace Hole3
 
             Money total = first;
 
-            foreach (Money next in monies)
-            {
-                if (!next.currency.Equals(total.currency))
-                {
-                    throw new Incalculable();
-                }
-            }
-
-            foreach (Money next in monies)
-            {
-                total = new Money(total.value + next.value, next.currency);
+            foreach (Money next in monies) {
+                total = total.Plus(next);
             }
 
             Double amount = total.value * (percent / 100d);
